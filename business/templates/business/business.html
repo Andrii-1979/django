@@ -1,0 +1,24 @@
+{% extends 'esc/base.html' %}
+{% load static %}
+
+<!-- Верхнее меню -->
+{% block nav1-business %}					
+	class="active"
+{% endblock %}
+
+{% block img %}
+<img src="{% static 'img/business.jpg' %}" width="300px" class='img-responsive'>
+{% endblock %}
+
+<!-- Нижнее меню -->
+{% block second-in %}
+	<li {% block nav2-tasks %} {% endblock %}>
+		<a href="{% url 'tasks' %}">Задания</a></li>
+{% endblock %}
+
+{% block content %}	
+	<h1>Дела</h1>
+	<hr>
+	<p>В данном разделе размещена информация, касающаяся заданий персоналу ЭСЦ.</p>
+	<p>Здесь вы сможете посмотреть последние поручения, когда подходит срок по проеткам...</p>
+{% endblock %}

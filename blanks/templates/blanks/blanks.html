@@ -1,0 +1,50 @@
+{% extends 'documents/documents.html' %}
+{% load static %}
+
+{% block img %}
+	<img src="{% static 'img/blanks.jpg' %}" class='img-responsive'>
+{% endblock %}
+
+<!-- Нижнее меню -->
+{% block nav2-blanks %}		
+	class="active"
+{% endblock %}
+
+<!-- Рисунок и название рубрики -->
+{% block content %}
+	<h2>Бланки</h2>
+	
+<!-- Таблица с данными -->
+	<table class="table table-responsive table-hover table-bordered">
+		<tr>
+			<th><a href="number">№ п/п</a></th>
+			<th><a href="number">Название бланка</a></th>
+			<th><a href="number">.doc</a></th>
+			<th><a href="drawing">.pdf</a></th>
+			<th><a href="drawing">Основание</a></th>
+		</tr>
+		{% for blank in blanks %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ blank.title }}</td>
+			<td>{% if blank.doc %}
+				<a href="{% static 'blanks' %}/{{ blank.doc }}.doc" target='_blank'>	
+					doc
+				</a>
+				{% else %}
+				-
+				{% endif %}
+			</td>
+			<td>{% if blank.pdf %}
+				<a href="{% static 'blanks' %}/{{ blank.pdf }}.pdf" target='_blank'>	
+					pdf
+				</a>
+				{% else %}
+				-
+				{% endif %}</td>	
+			<td>{{ blank.base }} </td>	
+		</tr>
+		{% endfor %}
+
+	</table>
+{% endblock %}
