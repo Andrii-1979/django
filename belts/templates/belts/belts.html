@@ -1,0 +1,42 @@
+{% extends 'tools/tools.html' %}
+{% load static %}
+
+{% block img %}
+	<img src="{% static 'img/belts.jpg' %}" class='img-responsive'>
+{% endblock %}
+
+<!-- Нижнее меню -->
+{% block nav2-belts %}		
+	class="active"
+{% endblock %}
+
+<!-- Рисунок и название рубрики -->
+{% block content %}
+	<!--<img src="{% static 'img/stairs.jpeg' %}" width="200px">-->
+	<h2>Пояса и веревки</h2>
+
+	
+<!-- Таблица с данными -->
+	<table class="table table-responsive table-hover">
+		<tr>
+			<th>№ п/п</th>
+			<th><a href="department">Участок</a></th>
+			<th><a href="tipe">Тип</a></th>
+			<th>Количество, шт</th>
+			<th><a href="data">Дата след. испытания</a></th>
+		</tr>
+		
+		{% for belt in belts %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ belt.department }}</td>
+			<td>{{ belt.tipe }}</td>
+			<td>{{ belt.number }}</td>
+			<td>{{ belt.data|date:"F Y" }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
+
+
+
